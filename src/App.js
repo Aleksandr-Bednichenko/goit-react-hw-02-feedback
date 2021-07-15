@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Statistics from './components/Statistics/Statistics';
-import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
-import Section from './components/Section/Section';
-import Notification from './components/Notification/Notification';
+import Statistics from './components/Statistics';
+import FeedbackOptions from './components/FeedbackOptions';
+import Section from './components/Section';
+import Notification from './components/Notification';
 
 class App extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class App extends React.Component {
 
   render() {
     const option = Object.keys(this.state);
-
+    const { good, neutral, bad } = this.state;
     return (
       <>
         <Section title={'Please leave feedback'}>
@@ -38,9 +38,9 @@ class App extends React.Component {
         ) : (
           <Section title={'Statistics'}>
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
